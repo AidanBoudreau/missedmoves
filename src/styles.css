@@ -1,0 +1,59 @@
+:root {
+  --paper: #EEF1F4; --surface: #FFFFFF; --ink: #1C2A3A; --muted: #5B6B7D; --line: #CBD5E0;
+  --sq-l: #DCE4EC; --sq-d: #7D93AB; --mark: #C8323C; --good: #2E7D5B; --sel: #F2C94C;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #121922; --surface: #1A2330; --ink: #E3E9F0; --muted: #93A3B5; --line: #2C394A;
+    --sq-l: #A9BACB; --sq-d: #566E88; --mark: #FF6B6B; --good: #5CC593; --sel: #E9B949;
+  }
+}
+* { box-sizing: border-box }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif }
+main { max-width: 520px; margin: 0 auto; padding: 20px 16px 48px }
+h1 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-weight: 600; font-size: 2rem; line-height: 1.1; margin: 0 0 4px; letter-spacing: -.01em }
+.sub { color: var(--muted); margin: 0 0 18px; font-size: .95rem }
+form { display: flex; gap: 8px }
+input, select { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; min-width: 0 }
+input { flex: 1 }
+button { font: inherit; cursor: pointer; border-radius: 8px; padding: 10px 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink) }
+button.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600 }
+button:disabled { opacity: .45; cursor: default }
+:focus-visible { outline: 3px solid var(--sel); outline-offset: 2px }
+details { margin: 10px 0 0; font-size: .9rem; color: var(--muted) }
+details label { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 8px }
+.status { min-height: 1.5em; margin: 12px 0 10px; font-size: .9rem; color: var(--muted) }
+.bar { height: 3px; background: var(--line); border-radius: 2px; overflow: hidden; margin-top: 6px }
+.bar i { display: block; height: 100%; width: 0; background: var(--mark); transition: width .3s }
+
+.board { display: grid; grid-template-columns: repeat(8, 1fr); width: 100%; aspect-ratio: 1; border-radius: 6px; overflow: hidden; container-type: inline-size; touch-action: manipulation; user-select: none; -webkit-user-select: none }
+.sq { position: relative; border: 0; border-radius: 0; padding: 0; margin: 0; display: flex; align-items: center; justify-content: center; background: var(--sq-l) }
+.sq.d { background: var(--sq-d) }
+.sq.last::before { content: ""; position: absolute; inset: 0; background: var(--sel); opacity: .38 }
+.sq.sel { box-shadow: inset 0 0 0 4px var(--sel) }
+.sq.hint { box-shadow: inset 0 0 0 4px var(--good) }
+.sq.ok::before { content: ""; position: absolute; inset: 0; background: var(--good); opacity: .45 }
+.sq.dot::after { content: ""; position: absolute; width: 28%; height: 28%; border-radius: 50%; background: rgba(20, 30, 45, .3) }
+.sq.dot.cap::after { width: 88%; height: 88%; background: transparent; border: 4px solid rgba(20, 30, 45, .3) }
+.pc { position: relative; font-size: min(9vw, 50px); font-size: 10.4cqw; line-height: 1; font-family: "Segoe UI Symbol", "Apple Symbols", "DejaVu Sans", serif }
+.pc.w { color: #fff; text-shadow: 1px 0 0 #1b2430, -1px 0 0 #1b2430, 0 1px 0 #1b2430, 0 -1px 0 #1b2430, 0 2px 2px rgba(0, 0, 0, .25) }
+.pc.b { color: #16202c; text-shadow: 0 1px 0 rgba(255, 255, 255, .35) }
+.coord { position: absolute; font-size: 2.4cqw; font-weight: 600; opacity: .75; color: var(--sq-d) }
+.sq.d .coord { color: var(--sq-l) }
+.coord.f { right: 3px; bottom: 1px }
+.coord.r { left: 3px; top: 1px }
+.shake { animation: shake .35s }
+@keyframes shake { 25% { transform: translateX(-6px) } 75% { transform: translateX(6px) } }
+@media (prefers-reduced-motion: reduce) { .shake { animation: none } .bar i { transition: none } }
+
+.card { margin-top: 14px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--mark); border-radius: 4px 10px 10px 4px; padding: 14px 16px }
+.card.solved { border-left-color: var(--good) }
+.prompt { margin: 0 0 6px; font-size: 1.05rem }
+.feedback { margin: 0; color: var(--muted); min-height: 1.5em }
+.feedback.good { color: var(--good) }
+.feedback.bad { color: var(--mark) }
+.meta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: .85rem; color: var(--muted); margin-top: 10px }
+.meta a { color: inherit }
+.actions { display: flex; gap: 8px; margin-top: 12px }
+.actions button { flex: 1 }
