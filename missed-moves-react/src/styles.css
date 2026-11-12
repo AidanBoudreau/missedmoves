@@ -39,7 +39,7 @@ details label { display: flex; justify-content: space-between; align-items: cent
 .pc { position: relative; font-size: min(9vw, 50px); font-size: 10.4cqw; line-height: 1; font-family: "Segoe UI Symbol", "Apple Symbols", "DejaVu Sans", serif }
 .pc.w { color: #fff; text-shadow: 1px 0 0 #1b2430, -1px 0 0 #1b2430, 0 1px 0 #1b2430, 0 -1px 0 #1b2430, 0 2px 2px rgba(0, 0, 0, .25) }
 .pc.b { color: #16202c; text-shadow: 0 1px 0 rgba(255, 255, 255, .35) }
-.coord { position: absolute; font-size: 2.4cqw; font-weight: 600; opacity: .75; color: var(--sq-d) }
+.coord { position: absolute; font-size: 11px; font-size: 2.4cqw; font-weight: 600; opacity: .75; color: var(--sq-d) }
 .sq.d .coord { color: var(--sq-l) }
 .coord.f { right: 3px; bottom: 1px }
 .coord.r { left: 3px; top: 1px }
